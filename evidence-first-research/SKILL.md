@@ -88,22 +88,26 @@ For the strongest source, explain why it carries the most weight for the specifi
 
 Use APA 7th edition author-date in-text citations for sourced factual claims and include a matching **References** list with retrievable links or DOIs. Put citations next to the claims they support. Format each reference using the actual work type and verified metadata (author, date, title, source); do not guess missing details. Prefer a stable link to the original document, study, official record, or dataset, not a homepage or secondary retelling. Identify publication type and relevant page, section, table, or dataset location when available. Use the host's native citation mechanism if required, while still supplying APA-style author-date references when the user requests APA. Never invent URLs, dates, page numbers, source identifiers, or references.
 
+For every source cited, explain its specific contribution: which claim(s) it supports, what evidence it provides and where that evidence appears, and any material limitation. A citation list without a claim-to-source explanation is insufficient. Keep this mapping concise (for example, a short “Source contributions” list or table); cite each factual claim in APA author-date style beside the claim and provide its complete matching APA reference.
+
 For a requested quotation, copy a short passage exactly from inspected source text and provide its location. If exact wording cannot be checked, say so; do not reconstruct a quote from memory or a snippet. Clearly distinguish quotation, paraphrase, summary, interpretation, and inference. Preserve qualifications in paraphrases and respect applicable quotation limits.
 
-### Required provenance note
+### Required per-message citations and provenance
 
-End every response produced while using this skill with a compact **Evidence provenance** note. Distinguish:
+Once this skill is invoked, keep these citation and provenance rules active for the entire current conversation, including follow-up answers, corrections, and status messages. Every response must include APA citations and source contributions for evidence it uses, then end with a compact **Evidence provenance** note. Reuse previously retrieved sources when they remain relevant and identify what each one supports in that response. Include a matching References entry for every source cited. If a response adds or relies on no evidence, say that no new sources were used rather than inventing a citation.
+
+Distinguish:
 
 - **Retrieved sources:** sources actually opened or inspected for this response; cite them in APA in the answer and References list.
 - **User-provided material:** uploaded, pasted, or linked material supplied by the user; identify it as such and cite it in APA when enough metadata is available.
 - **Built-in knowledge:** state whether it was used. If used, describe it only as background or search guidance, never as retrieved or verified evidence. If not used as evidence, say “Built-in knowledge: not used as evidence.”
 
-Do not imply that a source was retrieved when it was only supplied by the user, or that either was retrieved from an internal knowledge base. If a source type was not used, say “None.” Keep this note concise, but do not omit it from brief follow-ups while the skill is active. Place it after the References list so it is the final section of the response.
+Do not imply that a source was retrieved when it was only supplied by the user, or that either was retrieved from an internal knowledge base. If a source type was not used, say “None.” Keep the contribution map and note concise, but do not omit them from brief follow-ups while the skill is active. Place source contributions and References near the end, with Evidence provenance as the final section of every response.
 
 Adapt the answer to the ask:
 
-- **One source:** give the best match, type, exact support and location, why it is credible for this question, and the key limitation.
-- **Several sources:** rank a concise shortlist and identify each source's type, evidence role, and support level.
+- **One source:** give the best match, type, exact support and location, why it is credible for this question, and the key limitation; state explicitly what this source helped establish and what it did not.
+- **Several sources:** rank a concise shortlist and identify each source's type, evidence role, support level, contribution, and limitation.
 - **Quotation or paraphrase:** provide inspected wording or a faithful, clearly labeled paraphrase with location.
 - **Source comparison:** compare publication type, directness, evidence/method, currency, independence, and limitations.
 - **Developing story or allegations:** separate established facts, attributed reporting, and unresolved questions; explain the strongest source's evidence and limits.
