@@ -12,12 +12,10 @@ Use available agents to finish more validated implementation work in less time. 
 Before delegating:
 
 1. Read the user request and derive concrete acceptance criteria. Preserve user constraints and requested validation.
-2. Inspect the project structure and applicable instructions. Check root and relevant nested `AGENTS.md`, `AGENTS.override.md`, `CLAUDE.md`, `.cursor/rules/`, `.claude/agents/`, `.codex/agents/`, `.agents/`, and documented equivalents supported by this runtime. Follow actual platform precedence; these files are not interchangeable. In particular, `AGENTS.md` is generally project guidance, not automatically a per-worker definition.
-3. Discover the runtime's actual delegation, messaging, wait/resume, interruption, model/effort selection, concurrency, and workspace-isolation features. Do not infer these from the installed skill.
-4. Check existing named agents and their configurations. Reuse a suitable agent if available.
-5. Estimate independent work, resource pressure, and conflict risk. A small, serial, single-area task normally stays with the coordinator.
-
-Treat worker definitions and MCP configuration as code when the host executes them. Check their source and required tools, honor platform trust prompts, and never bypass a trust gate. A Markdown skill does not make an executable agent definition safe.
+2. Inspect the project structure and applicable instructions. Check root and relevant nested `AGENTS.md`, `AGENTS.override.md`, `CLAUDE.md`, `.github/copilot-instructions.md`, `.github/instructions/`, `.cursor/rules/`, `.agents/`, and documented equivalents. For worker definitions, inspect documented native locations such as `.claude/agents/`, `.cursor/agents/`, `.codex/agents/`, `.github/agents/`, and Codebuff/Freebuff `.agents/` files. Treat these as candidates: verify the current runtime reads each path and follow its actual precedence. The files are not interchangeable; `AGENTS.md` is generally project guidance, not automatically a per-worker definition.
+3. Discover the runtime's actual delegation, messaging, wait/resume, interruption, model/effort selection, concurrency, and workspace-isolation features. Check the selected worker's tools and permission scope, especially whether it can edit files. Do not infer capabilities from the installed skill or agent name.
+4. Check existing named agents and their configurations. Reuse a suitable agent if available. Treat executable worker definitions and MCP configuration as code: inspect their source and required tools, honor host trust prompts, and never bypass a trust gate. A Markdown skill does not make an executable agent definition safe.
+5. Estimate the parallel benefit against startup and context-gathering time, shared-state and write-conflict risk, and integration/verification overhead. A small, serial, single-area task normally stays with the coordinator.
 
 If a suitable persistent agent definition is missing, first decide whether reuse will justify creating it. Only create a minimal native definition when supported, authorized, and useful beyond one short assignment. Never overwrite existing user files or create a permanent file for every worker. Otherwise put role-specific guidance in the assignment itself. Report any persistent definitions created or changed.
 
@@ -26,16 +24,18 @@ If a suitable persistent agent definition is missing, first decide whether reuse
 Map the work into bounded packages by feature, component, or subsystem:
 
 1. Identify shared interfaces, dependencies, high-risk changes, and validation needs.
-2. Record dependencies as a small graph or checklist. Mark each package `ready`, `blocked`, `active`, `complete`, or `failed`; track active slots separately from total assignments.
+2. Record dependencies as a small graph or checklist. Mark each package `ready`, `blocked`, `active`, `retrying`, `complete`, or `failed`; track active slots separately from total assignments. For retries, retain the prior attempt, failure cause, and changed approach.
 3. Define shared contracts before parallel work when packages depend on them. Put dependent work later in the queue.
 4. Prefer assignments that produce code, tests, documentation, or configuration. When independent implementation exists, do not substitute a collection of audits or research tasks for implementation.
 5. Give each package a clear benefit over doing it directly. Do not fragment work just to increase worker count.
 
-Keep the coordinator productive on unowned work while workers run. Avoid changing files or interfaces owned by active workers.
+Keep the coordinator productive on unowned work while workers run. Avoid changing files or interfaces owned by active workers. A review or integration step for one completed package should not hold up unrelated ready packages; start independent work while integration proceeds, and wait only for dependencies that actually require the result or a shared interface.
 
 ## 3. Schedule adaptively
 
-Treat concurrency as a live capacity limit, not a target. Discover the host's available slots and documented caps. Maintain a ready queue and fill free slots with independent, useful work. When a worker completes, integrate or validate its result, unlock dependent work, then assign the next ready package. Reduce concurrency when conflicts, failures, resource pressure, or integration cost rise; increase it when more independent work is ready and the system is healthy. Stop when remaining work is dependent, unsafe to split, or cheaper to finish directly.
+Treat concurrency as a live capacity limit, not a target. Discover the host's available slots and documented caps. Maintain a ready queue and fill free slots with independent, useful work. When a worker completes, record its result and free its slot; immediately launch other ready work while integration proceeds. Unlock dependent packages only after their required inputs or shared interfaces are validated. Reduce concurrency when conflicts, failures, resource pressure, or integration cost rise; increase it when more independent work is ready and the system is healthy. Stop when remaining work is dependent, unsafe to split, or cheaper to finish directly.
+
+Judge throughput by completed, validated work and integration effort against the direct-work estimate, not by worker count. Use observed delays, rework, failures, and cost to adjust later waves. Keep tracking lightweight; do not add instrumentation unless it helps make a real scheduling decision.
 
 For exceptionally large projects, multiple waves may create 2,000 or more bounded assignments over time, and a runtime may support 50–100 active workers. These are conditional scale possibilities, never quotas. Do not claim or assume such capacity unless the runtime and workload support it. Never alter global settings to force a larger limit without explicit user direction. Prevent recursive spawning unless nesting is supported, useful, and bounded by an explicit task tree and budget.
 
@@ -73,6 +73,7 @@ Dependencies / inputs:
 Owned files or component:
 Allowed edits and prohibited overlap:
 Relevant project instructions / existing agent role:
+Available worker tools and permission scope:
 Suggested model and reasoning effort (if supported):
 Implementation and validation requested:
 Definition of done:
@@ -80,17 +81,17 @@ Report: implementation, files changed, checks and outcomes, unresolved issues,
 integration needs, and complete/blocked status.
 ```
 
-Ask workers to report concise results, not raw logs or hidden reasoning. A coding assignment must name measurable outputs. A review-only assignment is appropriate when review is the actual need, not as the default role for all delegated work.
+Ask workers to report concise results, not raw logs or hidden reasoning. A coding assignment must name measurable outputs. When the runtime permits writes, make independent implementation workers edit-capable and assign them implementation; do not default to read-only solely because they are subagents. Confirm tool access and permissions first. If available workers are read-only, use them for tasks they can perform and keep implementation with an agent that has write access; do not describe research as implementation. A review-only assignment is appropriate when review is the actual need, not as the default role for all delegated work.
 
 ## 7. Monitor, integrate, and recover
 
-Keep a compact ledger of assignment IDs, owners, dependencies, status, changed areas, and validation. Use native messaging, wait, resume, and interruption tools only when available. Reuse a worker when continuity helps and the runtime supports it. For long efforts, save concise checkpoints in an appropriate project artifact only when authorized and useful; do not invent persistence features.
+Keep a compact ledger of assignment IDs, owners, dependencies, status, attempt count, changed areas, and validation. Use native messaging, wait, resume, and interruption tools only when available. Reuse a worker when continuity helps and the runtime supports it. For long efforts, save concise checkpoints in an appropriate project artifact only when authorized and useful; do not invent persistence features. Give each worker only the context, files, and tool permissions needed for its assignment; do not pass secrets or unrelated private data. Workers may inherit the parent's credentials and tools, so verify scope before delegation.
 
-On failure, diagnose before retrying:
+On failure, diagnose before retrying and mark the assignment `retrying` with a bounded attempt count:
 
 - Missing context or unclear acceptance: repair the brief.
 - File collision: reassign ownership, isolate work, or serialize.
-- Tool, permission, environment, or timeout fault: fix the cause or report the blocker.
+- Worker crash, timeout, context exhaustion, tool/API error, permission failure, or environment fault: distinguish a transient failure from a missing capability; resume or reassign only when useful, otherwise report the blocker.
 - Incomplete implementation: identify the remaining acceptance items and resume or reassign once.
 - Test failure: determine whether the change, test setup, or environment caused it.
 - Reasoning failure: change the approach, scope, or justified effort.
@@ -99,7 +100,7 @@ Bound retries. Do not repeatedly send the same failed assignment unchanged or im
 
 ## 8. Verify completion
 
-Integrate finished work and check the combined result against the user's acceptance criteria. Run relevant tests, builds, type checks, and other requested verification using project instructions. Do not claim checks ran when they did not. Confirm required dependencies are complete, unresolved conflicts are handled, and active work has stopped. Report implemented work, validation outcomes, and material blockers clearly.
+Inspect each worker's changed-file list or diff and validate the combined result against the user's acceptance criteria; do not treat a completion message as proof. Run relevant tests, builds, type checks, and other requested verification using project instructions. Do not claim checks ran when they did not. Confirm required dependencies are complete, unresolved conflicts are handled, and active work has stopped. Report implemented work, validation outcomes, and material blockers clearly.
 
 ## Capability fallback
 
