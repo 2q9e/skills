@@ -108,3 +108,48 @@ Before delegation, inspect root guidance and nested or path-scoped rules that ap
 
 The Skill Creator quick validator passes for this folder. Five independent read-only audits and two scenario walkthroughs informed the workflow; a Skill Creator review helped remove duplicated and speculative guidance. Platform behavior was cross-checked against vendor documentation and, for Freebuff, its public source. No live worker-runtime test or worker-count benchmark is claimed.
 
+
+
+## `evidence-first-research`
+
+[`evidence-first-research/SKILL.md`](evidence-first-research/SKILL.md) helps an assistant find, verify, assess, and cite sources for factual, academic, journalistic, policy, and technical questions. It starts with the exact claim and requested source constraints, searches for original evidence, inspects the source itself, and reports what it does and does not support.
+
+### What it covers
+
+- Classifies the document's **format**, **publisher**, **evidence role**, and **quality for the claim** separately. It distinguishes research papers and preprints, government and institutional reports, statistical releases, journalism and investigations, newsletters, blogs, opinion, press releases, corporate and NGO publications, official documentation, primary records, and secondary summaries.
+- Evaluates evidence, method, relevance, currency, independence, conflicts, and verifiability without assuming a domain or publication format determines quality.
+- Labels claim support as direct, partial, indirect, contradictory, absent, or unverified; ranks useful sources qualitatively.
+- Traces claims to original documents, checks figures and context, looks for independent corroboration where warranted, and gives specific, verified citations. It never invents quotations or source details.
+- Respects hard source and date constraints and reports evidence gaps without silently weakening those constraints.
+
+### Install and invoke
+
+Copy the complete folder into a skill directory recognized by your assistant, then follow that assistant's current discovery and invocation instructions. Common project locations include `.agents/skills/` (Codex and some compatible clients), `.claude/skills/` (Claude Code), and `.github/skills/` (GitHub Copilot in VS Code); personal locations and support differ by client and harness. Cursor and other compatible clients may support additional locations. These are examples, not a guarantee that every product or harness discovers every path. The `SKILL.md` format is portable; installation, automatic selection, slash commands, and research tools are not universal.
+
+```sh
+# From this repository, for a client that discovers .agents/skills/
+mkdir -p .agents/skills
+cp -R evidence-first-research .agents/skills/
+
+# Or install the folder under the location documented by your client.
+```
+
+Where supported, select the skill by name or ask: “Use evidence-first-research to check whether this source supports my claim.” Clients may load it automatically when relevant; skill availability does not ensure automatic activation or provide browsing access.
+
+### Workflow and citation behavior
+
+The skill defines the proposition first, searches with topic synonyms and source-specific queries, opens promising source material, classifies the actual publication, locates the supporting passage/table/data, checks context and figures, and then presents a concise answer fitted to the request. Citations point to the original source when available, identify a precise page or section when verified, and sit next to supported claims. Quotations are exact and brief; paraphrases and inferences are labeled. If a source cannot be retrieved, support remains unverified.
+
+### Example requests
+
+- “Find a recent government report supporting this claim.”
+- “Find three credible sources, but no blogs.”
+- “Find the original research behind this statistic.”
+- “Find a quote I can use in an essay.”
+- “Is this newsletter reliable?”
+- “Does this source actually support my argument?”
+- “Find a stronger source than this article.”
+
+### Limits
+
+The skill does not itself browse the web, grant database access, guarantee exhaustive searching, or replace expert judgment. Its results depend on the host's retrieval tools and the accessible source material. Publication labels and domain reputation alone do not establish correctness.
