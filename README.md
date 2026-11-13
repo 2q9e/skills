@@ -106,5 +106,5 @@ Before delegation, inspect root guidance and nested or path-scoped rules that ap
 
 ## Validation performed
 
-This skill was checked for YAML frontmatter, name/folder agreement, relative links, and core behaviors for small tasks, parallel implementation, large waves, effort selection, instruction reuse, write isolation, retries, authorization boundaries, and restricted runtimes. Five independent read-only audits informed the revisions. Platform behavior was cross-checked against vendor documentation and, for Freebuff, its public source. Scenario coverage was assessed statically; no live worker-runtime test or worker-count benchmark is claimed.
+The Skill Creator quick validator passes for this folder. Five independent read-only audits and two scenario walkthroughs informed the workflow; a Skill Creator review helped remove duplicated and speculative guidance. Platform behavior was cross-checked against vendor documentation and, for Freebuff, its public source. No live worker-runtime test or worker-count benchmark is claimed.
 
