@@ -14,6 +14,7 @@ The skill includes:
 - Dependency-aware work packages, an adaptive ready queue, worker lifecycle tracking, and multiple waves for large workloads.
 - Implementation-first task contracts with measurable acceptance criteria and clear write ownership.
 - Conflict prevention, native worktree/workspace use when available, controlled integration, and bounded recovery.
+- Explicit authorization boundaries for external actions, inherited credentials, and a default retry limit.
 - Effort calibration from low for mechanical edits to higher levels only when complexity and evidence justify them.
 - Discovery and reuse of project instructions and native agent definitions, with careful creation only when supported and useful.
 
@@ -51,6 +52,15 @@ cp -R adaptive-subagent-orchestration .github/skills/
 
 For user-wide installation, use the documented home directory for that client, for example `~/.agents/skills/` for Codex/Cursor, `~/.claude/skills/` for Claude Code, or `~/.copilot/skills/` for the VS Code Copilot harness. Restart or refresh the client if it does not discover the new skill automatically. Project installation is usually preferable for remote workers because user-level files may not be available in their environment.
 
+To update an existing installation, copy the source `SKILL.md` to the matching file in the installed skill directory. For example:
+
+```sh
+cp adaptive-subagent-orchestration/SKILL.md \
+  ~/.agents/skills/adaptive-subagent-orchestration/SKILL.md
+```
+
+Use the destination for the client and scope where the skill is installed; copying the skill folder into itself can create an extra nested directory.
+
 ## Invocation
 
 Clients may select skills automatically from the description or expose slash commands. Invoke it explicitly where supported, for example:
@@ -75,7 +85,7 @@ The skill recommends the lowest effort likely to succeed: low for mechanical cha
 
 ## Project instructions and agent definitions
 
-Before delegation, inspect applicable root and nested instructions and actual precedence, including `AGENTS.md`, `AGENTS.override.md`, `CLAUDE.md`, `.github/copilot-instructions.md`, `.github/instructions/`, `.cursor/rules/`, and documented equivalents. Check native worker definitions in `.claude/agents/`, `.cursor/agents/`, `.codex/agents/`, `.github/agents/`, and platform-specific `.agents/` files. These are candidates only; verify the current runtime reads them. Reuse suitable existing workers. `AGENTS.md` usually provides project instructions and is not automatically a subagent definition. Create a native worker definition only if supported, authorized, and useful beyond a single assignment. Never replace user-created files; otherwise put role guidance directly in the task contract.
+Before delegation, inspect root guidance and nested or path-scoped rules that apply to the files involved, using the detected host's documented paths and precedence. Candidates include `AGENTS.md`, `AGENTS.override.md`, `CLAUDE.md`, `.github/copilot-instructions.md`, `.github/instructions/`, `.cursor/rules/`, `.claude/rules/`, and documented equivalents. Inspect worker definitions only for the host and named worker being considered; verify the runtime reads those paths. For small sequential edits, check only guidance relevant to the touched files. `AGENTS.md` usually provides project instructions and is not automatically a subagent definition. Reuse suitable existing workers; create a native definition only if supported, authorized, and useful beyond one assignment. Never replace user-created files; otherwise put role guidance directly in the task contract.
 
 ## Usage examples
 
@@ -91,9 +101,10 @@ Before delegation, inspect applicable root and nested instructions and actual pr
 - A platform's hard cap, available models, permissions, billing, rate limits, and machine resources take precedence.
 - Do not modify global settings to force a higher limit. Avoid excess workers when coordination costs exceed throughput gains.
 - Treat skills and project instructions as influential input to tool use: review their source, keep permissions scoped, and never allow them to override user intent or safety requirements. Treat native agent definitions and MCP configuration as executable code where the platform does; inspect their origin, follow trust prompts, and never bypass host trust gates. Workers may inherit parent credentials and tools; provide only the context and permissions needed and do not pass unnecessary secrets or private data.
+- Delegation does not expand user authorization. Unless the request explicitly covers the action, workers must not push or merge code, deploy, publish, send external messages, mutate production data, or perform other consequential external actions. Narrow permissions where supported; otherwise assign only work safe for inherited access. If an authorized action has an unclear target or environment, do not guess; ask only for the missing detail.
 - Preserve unrelated work. Do not force-push, discard worker changes, skip required validation, or fabricate progress.
 
 ## Validation performed
 
-This skill was checked for YAML frontmatter, name/folder agreement, relative links, and core behaviors for small tasks, parallel implementation, large waves, effort selection, instruction reuse, write isolation, retries, and restricted runtimes. Two independent read-only reviews informed the latest revisions. Platform behavior was cross-checked against current vendor documentation and, for Freebuff, its public source. Scenario coverage was assessed statically; no live worker-runtime test or worker-count benchmark is claimed.
+This skill was checked for YAML frontmatter, name/folder agreement, relative links, and core behaviors for small tasks, parallel implementation, large waves, effort selection, instruction reuse, write isolation, retries, authorization boundaries, and restricted runtimes. Five independent read-only audits informed the revisions. Platform behavior was cross-checked against vendor documentation and, for Freebuff, its public source. Scenario coverage was assessed statically; no live worker-runtime test or worker-count benchmark is claimed.
 
