@@ -119,8 +119,9 @@ The Skill Creator quick validator passes for this folder. Five independent read-
 - Classifies the document's **format**, **publisher**, **evidence role**, and **quality for the claim** separately. It distinguishes research papers and preprints, government and institutional reports, statistical releases, journalism and investigations, newsletters, blogs, opinion, press releases, corporate and NGO publications, official documentation, primary records, and secondary summaries.
 - Evaluates evidence, method, relevance, currency, independence, conflicts, and verifiability without assuming a domain or publication format determines quality.
 - Labels claim support as direct, partial, indirect, contradictory, absent, or unverified; ranks useful sources qualitatively.
-- Traces claims to original documents, checks figures and context, looks for independent corroboration where warranted, and gives specific, verified citations. It never invents quotations or source details.
+- Traces claims to original documents, checks figures and context, looks for independent corroboration where warranted, and uses APA 7 author-date citations with matching references. It explains what each source supports and its limits.
 - Respects hard source and date constraints and reports evidence gaps without silently weakening those constraints.
+- Once invoked, applies APA citations, per-source contribution notes, and a source-provenance footer to every response for the rest of the conversation, including follow-ups.
 
 ### Install and invoke
 
@@ -148,7 +149,7 @@ Where supported, select the skill by name or ask: “Use evidence-first-research
 
 ### Workflow and citation behavior
 
-The skill defines the proposition first, searches with topic synonyms and source-specific queries, opens promising source material, classifies the actual publication, locates the supporting passage/table/data, checks context and figures, and then presents a concise answer fitted to the request. Citations point to the original source when available, identify a precise page or section when verified, and sit next to supported claims. Quotations are exact and brief; paraphrases and inferences are labeled. If a source cannot be retrieved, support remains unverified.
+The skill defines the proposition first, searches with topic synonyms and source-specific queries, opens promising source material, classifies the actual publication, locates the supporting passage/table/data, checks context and figures, and then presents a concise answer fitted to the request. APA 7 author-date citations sit next to supported claims, with matching reference entries. A concise source-contribution note states what each source helped establish, its evidence location, and its limits. Once invoked, these conventions continue in each response throughout the conversation. Quotations are exact and brief; paraphrases and inferences are labeled. If a source cannot be retrieved, support remains unverified.
 
 ### Example requests
 
