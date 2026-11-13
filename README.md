@@ -110,9 +110,9 @@ The Skill Creator quick validator passes for this folder. Five independent read-
 
 
 
-## `evidence-first-research`
+## `better-research`
 
-[`evidence-first-research/SKILL.md`](evidence-first-research/SKILL.md) helps an assistant find, verify, assess, and cite sources for factual, academic, journalistic, policy, and technical questions. It starts with the exact claim and requested source constraints, searches for original evidence, inspects the source itself, and reports what it does and does not support.
+[`better-research/SKILL.md`](better-research/SKILL.md) helps an assistant find, verify, assess, and cite sources for factual, academic, journalistic, policy, and technical questions. It starts with the exact claim and requested source constraints, searches for original evidence, inspects the source itself, and reports what it does and does not support.
 
 ### What it covers
 
@@ -140,12 +140,12 @@ See the clients' [Codex](https://developers.openai.com/codex/skills), [Cursor](h
 ```sh
 # From this repository, for a client that discovers .agents/skills/
 mkdir -p .agents/skills
-cp -R evidence-first-research .agents/skills/
+cp -R better-research .agents/skills/
 
 # Or install the folder under the location documented by your client.
 ```
 
-Where supported, select the skill by name or ask: “Use evidence-first-research to check whether this source supports my claim.” Clients may load it automatically when relevant; skill availability does not ensure automatic activation or provide browsing access.
+Where supported, select the skill by name or ask: “Use better-research to check whether this source supports my claim.” Clients may load it automatically when relevant; skill availability does not ensure automatic activation or provide browsing access.
 
 ### Workflow and citation behavior
 
