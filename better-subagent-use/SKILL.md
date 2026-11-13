@@ -1,9 +1,9 @@
 ---
-name: adaptive-subagent-orchestration
+name: better-subagent-use
 description: Plan and coordinate coding work with subagents when useful. Use for implementation planning, parallel coding, multi-component features, large refactors, independent testing, or agent coordination; handle small sequential tasks directly.
 ---
 
-# Adaptive subagent orchestration
+# Better subagent use
 
 Use available agents to finish more validated implementation work in less time. Delegation is a means, not a goal. This skill does not create agent tools, raise platform limits, grant permissions, or guarantee parallel execution. Use only capabilities exposed by the current runtime; adapt or work directly when a needed capability is absent, and never claim unsupported capabilities or results.
 

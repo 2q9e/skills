@@ -1,12 +1,12 @@
-# Adaptive Subagent Orchestration
+# Better Subagent Use
 
 A portable Agent Skill for coding assistants that helps them decide when to delegate, assign implementation work safely, adapt concurrency to actual runtime capacity, and integrate validated results. The skill is instruction-only: it does not provide an agent runtime, raise concurrency limits, or grant additional permissions.
 
 ## Available skill
 
-### `adaptive-subagent-orchestration`
+### `better-subagent-use`
 
-Located at [`adaptive-subagent-orchestration/SKILL.md`](adaptive-subagent-orchestration/SKILL.md). Use it for implementation planning, parallel work, multi-component features, large refactors, and agent coordination. It keeps simple, sequential tasks with the main agent; when delegation makes sense, it explicitly favors bounded coding assignments alongside research, testing, and review.
+Located at [`better-subagent-use/SKILL.md`](better-subagent-use/SKILL.md). Use it for implementation planning, parallel work, multi-component features, large refactors, and agent coordination. It keeps simple, sequential tasks with the main agent; when delegation makes sense, it explicitly favors bounded coding assignments alongside research, testing, and review.
 
 The skill includes:
 
@@ -34,20 +34,20 @@ The Agent Skills format standardizes a folder containing `SKILL.md` with YAML me
 
 ## Installation
 
-Clone or download this repository, then copy the complete `adaptive-subagent-orchestration` folder into one supported skill directory. Examples:
+Clone or download this repository, then copy the complete `better-subagent-use` folder into one supported skill directory. Examples:
 
 ```sh
 # Codex, Cursor, Freebuff, or another client supporting the shared project path
 mkdir -p .agents/skills
-cp -R adaptive-subagent-orchestration .agents/skills/
+cp -R better-subagent-use .agents/skills/
 
 # Claude Code project installation
 mkdir -p .claude/skills
-cp -R adaptive-subagent-orchestration .claude/skills/
+cp -R better-subagent-use .claude/skills/
 
 # GitHub Copilot harness in VS Code
 mkdir -p .github/skills
-cp -R adaptive-subagent-orchestration .github/skills/
+cp -R better-subagent-use .github/skills/
 ```
 
 For user-wide installation, use the documented home directory for that client, for example `~/.agents/skills/` for Codex/Cursor, `~/.claude/skills/` for Claude Code, or `~/.copilot/skills/` for the VS Code Copilot harness. Restart or refresh the client if it does not discover the new skill automatically. Project installation is usually preferable for remote workers because user-level files may not be available in their environment.
@@ -55,8 +55,8 @@ For user-wide installation, use the documented home directory for that client, f
 To update an existing installation, copy the source `SKILL.md` to the matching file in the installed skill directory. For example:
 
 ```sh
-cp adaptive-subagent-orchestration/SKILL.md \
-  ~/.agents/skills/adaptive-subagent-orchestration/SKILL.md
+cp better-subagent-use/SKILL.md \
+  ~/.agents/skills/better-subagent-use/SKILL.md
 ```
 
 Use the destination for the client and scope where the skill is installed; copying the skill folder into itself can create an extra nested directory.
@@ -66,10 +66,10 @@ Use the destination for the client and scope where the skill is installed; copyi
 Clients may select skills automatically from the description or expose slash commands. Invoke it explicitly where supported, for example:
 
 ```text
-Use adaptive-subagent-orchestration to plan and implement this feature.
+Use better-subagent-use to plan and implement this feature.
 ```
 
-Or select `/adaptive-subagent-orchestration` from a client's skill menu. A skill's presence does not guarantee automatic activation. Invocation also does not enable subagent tools; those must be available and configured by the client or runtime.
+Or select `/better-subagent-use` from a client's skill menu. A skill's presence does not guarantee automatic activation. Invocation also does not enable subagent tools; those must be available and configured by the client or runtime.
 
 ## How adaptive delegation works
 
