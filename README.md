@@ -124,7 +124,17 @@ The Skill Creator quick validator passes for this folder. Five independent read-
 
 ### Install and invoke
 
-Copy the complete folder into a skill directory recognized by your assistant, then follow that assistant's current discovery and invocation instructions. Common project locations include `.agents/skills/` (Codex and some compatible clients), `.claude/skills/` (Claude Code), and `.github/skills/` (GitHub Copilot in VS Code); personal locations and support differ by client and harness. Cursor and other compatible clients may support additional locations. These are examples, not a guarantee that every product or harness discovers every path. The `SKILL.md` format is portable; installation, automatic selection, slash commands, and research tools are not universal.
+Copy the complete folder into a skill directory recognized by your assistant, then follow that assistant's current discovery and invocation instructions. Verified examples include:
+
+| Client | Project location | Personal location |
+| --- | --- | --- |
+| Codex | `.agents/skills/` | `~/.agents/skills/` |
+| Cursor | `.agents/skills/` or `.cursor/skills/` | `~/.agents/skills/` or `~/.cursor/skills/` |
+| Claude Code | `.claude/skills/` | `~/.claude/skills/` |
+| GitHub Copilot in VS Code | `.github/skills/` | `~/.copilot/skills/` |
+| Freebuff | `.agents/skills/` | Check the current client documentation |
+
+See the clients' [Codex](https://developers.openai.com/codex/skills), [Cursor](https://cursor.com/docs/skills), [Claude Code](https://code.claude.com/docs/en/skills), [VS Code](https://code.visualstudio.com/docs/agent-customization/agent-skills), and [Freebuff](https://github.com/CodebuffAI/freebuff/blob/main/common/src/templates/initial-agents-dir/skills/README.md) documentation for current installation and discovery details. The table describes common supported locations, not a guarantee that every harness or hosted agent loads every path. The `SKILL.md` format is portable; installation, automatic selection, slash commands, and research tools are not universal.
 
 ```sh
 # From this repository, for a client that discovers .agents/skills/
