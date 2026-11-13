@@ -132,7 +132,7 @@ Copy the complete folder into a skill directory recognized by your assistant, th
 | Cursor | `.agents/skills/` or `.cursor/skills/` | `~/.agents/skills/` or `~/.cursor/skills/` |
 | Claude Code | `.claude/skills/` | `~/.claude/skills/` |
 | GitHub Copilot in VS Code | `.github/skills/` | `~/.copilot/skills/` |
-| Freebuff | `.agents/skills/` | Check the current client documentation |
+| Freebuff | `.agents/skills/` | `~/.agents/skills/` |
 
 See the clients' [Codex](https://developers.openai.com/codex/skills), [Cursor](https://cursor.com/docs/skills), [Claude Code](https://code.claude.com/docs/en/skills), [VS Code](https://code.visualstudio.com/docs/agent-customization/agent-skills), and [Freebuff](https://github.com/CodebuffAI/freebuff/blob/main/common/src/templates/initial-agents-dir/skills/README.md) documentation for current installation and discovery details. The table describes common supported locations, not a guarantee that every harness or hosted agent loads every path. The `SKILL.md` format is portable; installation, automatic selection, slash commands, and research tools are not universal.
 
@@ -159,6 +159,10 @@ The skill defines the proposition first, searches with topic synonyms and source
 - “Is this newsletter reliable?”
 - “Does this source actually support my argument?”
 - “Find a stronger source than this article.”
+
+### Validation
+
+The skill passes the Skill Creator quick validator. A read-only content and portability audit and three instruction-based scenario walkthroughs covered publication-type distinctions, source roles, direct claim support, and time-period/metric checks. These walkthroughs were not live-source retrieval tests or agent-runtime evaluations.
 
 ### Limits
 
