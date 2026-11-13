@@ -5,7 +5,7 @@ description: Find, verify, assess, and accurately cite sources for factual, acad
 
 # Evidence-first research
 
-Research the proposition the user needs to establish, then identify what the available evidence actually supports. Do not search merely for sources that agree with a desired conclusion. Respect source, date, geography, language, and format constraints. Never imply that a source was opened or verified if the current environment could not retrieve it.
+Research the proposition the user needs to establish, then identify what the available evidence actually supports. Prefer current, inspectable sources over built-in model knowledge, which may be stale and cannot itself be verified by the reader. Do not search merely for sources that agree with a desired conclusion. Respect source, date, geography, language, and format constraints. Never imply that a source was opened or verified if the current environment could not retrieve it.
 
 ## 1. Define the evidence need
 
@@ -15,7 +15,7 @@ Decide whether the user needs an original record, data, research, reporting, a q
 
 ## 2. Search for the best available evidence
 
-Use the search, browsing, academic, document, and file tools actually available in the host. Discover their syntax and limits instead of assuming one provider’s operators work everywhere. If browsing or retrieval is unavailable, state that limitation and offer search terms or assess only material the user supplied.
+Use the search, browsing, academic, document, and file tools actually available in the host. Discover their syntax and limits instead of assuming one provider’s operators work everywhere. For factual research, ground conclusions in sources you retrieved or material the user supplied; use built-in knowledge only to generate search terms or provide clearly labeled context, never as a substitute for evidence when retrieval is available. Prioritize original and authoritative sources, and check publication/update dates and the date of underlying data when recency matters. If browsing or retrieval is unavailable, say that current verification was not possible, separate any provisional built-in context from verified evidence, and offer search terms or assess only material the user supplied.
 
 Build a small set of concept variants: synonyms, alternate technical terms, names of relevant institutions or researchers, geography, and dates. Search for original studies, official datasets and reports, primary records, and the specific document behind a secondary claim. Useful tactics where supported include quoted phrases, domain filters, file-type filters, DOI/title searches, backward citation tracing, and forward searches for newer work. Search specialist databases when available. If early results are weak, vary the query or source class rather than repeating it.
 
@@ -74,11 +74,31 @@ Keep relevance and credibility separate. Rank candidates by fit to user constrai
 
 Watch for causal claims based only on correlation, cherry-picked figures, missing methods, selective quotations, recycled press releases, circular citations, predatory journals, sponsored content, undisclosed interests, estimates presented as outcomes, revenue confused with profit or economic impact, local results generalized too widely, and old findings presented as current. For consequential or disputed claims, seek independent corroboration when practical. Trace repeated coverage to its common origin. When sources disagree, compare definitions, dates, methods, geography, revisions, interests, and genuine uncertainty; explain material disagreement instead of hiding it.
 
+### Fast-moving stories and allegations
+
+For breaking, developing, disputed, or high-stakes news, make evidence status explicit with a short **Confirmed / Reported / Unknown** breakdown when useful:
+
+- **Confirmed:** State only what is established by inspected records or sufficiently corroborated evidence. Attribute official statements precisely: an announcement can confirm what an organization announced or what its spokesperson says; it does not automatically verify every underlying claim in that statement.
+- **Reported, not independently established:** Attribute the claim to the named outlet or source. Describe the evidence it reports (for example, on-the-record interviews, documents, named or anonymous sources, or data) and its limits. Do not restate allegations as facts or strengthen a source's wording.
+- **Unknown / not established:** Identify what remains under investigation, unverified, undisclosed, or unresolved. Do not infer that an allegation is true from an investigation, or infer that it is false from a denial or lack of public evidence.
+
+For the strongest source, explain why it carries the most weight for the specific claim, what evidence it actually presents, and what it cannot establish. Check the source's latest update, the event date, and later corrections or statements; label the answer with an “as of” date when developments may change it. Do not force this format onto routine, settled questions.
+
 ## 5. Cite and report precisely
 
-Prefer a stable link to the original document, study, official record, or dataset (DOI where appropriate), not a homepage or a secondary retelling. Identify title, author or institution, publisher, date, publication type, relevant page/section/table, and the claim it supports when available. Put citations beside the factual statements they support. Use the host's native citation mechanism when available; otherwise use verified Markdown links. Never invent URLs, dates, page numbers, source identifiers, or references.
+Use APA 7th edition author-date in-text citations for sourced factual claims and include a matching **References** list with retrievable links or DOIs. Put citations next to the claims they support. Format each reference using the actual work type and verified metadata (author, date, title, source); do not guess missing details. Prefer a stable link to the original document, study, official record, or dataset, not a homepage or secondary retelling. Identify publication type and relevant page, section, table, or dataset location when available. Use the host's native citation mechanism if required, while still supplying APA-style author-date references when the user requests APA. Never invent URLs, dates, page numbers, source identifiers, or references.
 
 For a requested quotation, copy a short passage exactly from inspected source text and provide its location. If exact wording cannot be checked, say so; do not reconstruct a quote from memory or a snippet. Clearly distinguish quotation, paraphrase, summary, interpretation, and inference. Preserve qualifications in paraphrases and respect applicable quotation limits.
+
+### Required provenance note
+
+End every response produced while using this skill with a compact **Evidence provenance** note. Distinguish:
+
+- **Retrieved sources:** sources actually opened or inspected for this response; cite them in APA in the answer and References list.
+- **User-provided material:** uploaded, pasted, or linked material supplied by the user; identify it as such and cite it in APA when enough metadata is available.
+- **Built-in knowledge:** state whether it was used. If used, describe it only as background or search guidance, never as retrieved or verified evidence. If not used as evidence, say “Built-in knowledge: not used as evidence.”
+
+Do not imply that a source was retrieved when it was only supplied by the user, or that either was retrieved from an internal knowledge base. If a source type was not used, say “None.” Keep this note concise, but do not omit it from brief follow-ups while the skill is active. Place it after the References list so it is the final section of the response.
 
 Adapt the answer to the ask:
 
@@ -86,6 +106,7 @@ Adapt the answer to the ask:
 - **Several sources:** rank a concise shortlist and identify each source's type, evidence role, and support level.
 - **Quotation or paraphrase:** provide inspected wording or a faithful, clearly labeled paraphrase with location.
 - **Source comparison:** compare publication type, directness, evidence/method, currency, independence, and limitations.
+- **Developing story or allegations:** separate established facts, attributed reporting, and unresolved questions; explain the strongest source's evidence and limits.
 - **Deep research:** synthesize what is well supported, disputed, uncertain, and missing.
 
 If the proposed claim is unsupported, overstated, or contradicted, say which part fails, state the narrowest defensible conclusion, and locate evidence for it where possible. Include meaningful contrary evidence. Truthfulness takes priority over confirmation.
