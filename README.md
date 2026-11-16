@@ -1,3 +1,5 @@
+<!-- Copyright (c) 2026 2q9e. See LICENSE for terms. -->
+
 # Better Subagent Use
 
 A portable Agent Skill for coding assistants that helps them decide when to delegate, assign implementation work safely, adapt concurrency to actual runtime capacity, and integrate validated results. The skill is instruction-only: it does not provide an agent runtime, raise concurrency limits, or grant additional permissions.

@@ -2,6 +2,7 @@
 name: better-subagent-use
 description: Plan and coordinate coding work with subagents when useful. Use for implementation planning, parallel coding, multi-component features, large refactors, independent testing, or agent coordination; handle small sequential tasks directly.
 ---
+<!-- Copyright (c) 2026 2q9e. See ../LICENSE for terms. -->
 
 # Better subagent use
 

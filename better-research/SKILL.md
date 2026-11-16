@@ -2,6 +2,7 @@
 name: better-research
 description: Find, verify, assess, and accurately cite sources for factual, academic, journalistic, policy, and technical questions. Use when researching a claim, checking whether evidence supports it, locating original sources or quotations, comparing publications, or assessing source reliability.
 ---
+<!-- Copyright (c) 2026 2q9e. See ../LICENSE for terms. -->
 
 # Evidence-first research
 
