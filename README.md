@@ -1,10 +1,10 @@
 <!-- Copyright (c) 2026 2q9e. See LICENSE for terms. -->
 
-# Better Subagent Use
+# Agent Skills
 
-A portable Agent Skill for coding assistants that helps them decide when to delegate, assign implementation work safely, adapt concurrency to actual runtime capacity, and integrate validated results. The skill is instruction-only: it does not provide an agent runtime, raise concurrency limits, or grant additional permissions.
+This repository contains two portable Agent Skills. [Better Research](better-research/SKILL.md) guides source discovery, claim verification, and citation. [Better Subagent Use](better-subagent-use/SKILL.md) guides delegation decisions and review of agent results using the capabilities available in the host.
 
-## Available skill
+## Better Subagent Use
 
 ### `better-subagent-use`
 
